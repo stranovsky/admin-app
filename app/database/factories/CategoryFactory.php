@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CategoryFactory extends Factory
@@ -13,9 +14,10 @@ class CategoryFactory extends Factory
      */
     public function definition()
     {
+        $randomName = $this->faker->name();
         return [
-            'name' => $this->faker->name(),
-            'slug' => $this->faker->name(),
+            'categoryName' => $randomName,
+            'slug' => Str::lower($randomName),
         ];
     }
 }
