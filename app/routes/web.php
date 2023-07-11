@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +16,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::post('/products/create', [ProductController::class, 'store']);
+Route::put('/products/{product}/edit', [ProductController::class, 'update']);
+Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products/create', [ProductController::class, 'create']);
+Route::delete('/products/{product}', [ProductController::class, 'destroy']);
+Route::get('/products/{product}', [ProductController::class, 'show']);
+Route::get('/products/{product}/edit', [ProductController::class, 'edit']);
+
+Route::post('/users',[UserController::class, 'store']);
+Route::get('/register',[UserController::class, 'create']);
 
 /*
 whis be wild card route
