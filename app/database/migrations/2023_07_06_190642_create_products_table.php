@@ -18,8 +18,8 @@ class CreateProductsTable extends Migration
             $table->string('productName');
             $table->longText('description');
             $table->decimal('price',10,2);
-            $table->integer('idUser');
-            $table->integer('idCategory');
+            $table->foreignId('idUser');
+            $table->foreignId('idCategory');
             $table->timestamps();
         });
     }
