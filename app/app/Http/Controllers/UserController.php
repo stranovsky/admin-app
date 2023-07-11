@@ -36,4 +36,22 @@ class UserController extends Controller
 
         return redirect('./products')->with('success','Logged out!');;
     }
+    
+    public function login(){
+        return view('users.login');
+    }
+
+    public function authenticate (Request $request){
+        $formFields = $request->validate([
+            'email'=>['required','email'],
+            'password'=>'required'
+        ]);
+
+        if(auth()->attempt($formFields)){
+            $request->session()->regenerate();
+
+            return redirect('./products')->with('success','Successfully logged in!');
+        }
+        return back()->withErrors(['email'=>'Invalid credentials'])->onlyInput('email');
+    }
 }
