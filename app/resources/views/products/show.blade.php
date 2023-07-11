@@ -9,3 +9,13 @@
 <p>
     {{$product->description}}
 </p>
+<div>
+    <a href = './{{$product->id}}/edit' class="inline-block">edit</a>
+    <form method="POST" action="./{{$product->id}}">
+        @csrf
+        @method('DELETE')
+        <button>
+            <i class="fa-solid fa-trash"></i>
+            Delete
+        </button>
+</div>

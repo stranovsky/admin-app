@@ -9,10 +9,14 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['productName','description','price','idCategory','idUser'];
+
     public function scopeFilter($query, array $filters){
+        //use this filter when selecting from nav bar
         if($filters['categoryID'] ?? false){
             $query->where('idCategory','like', '%'. request('categoryID') .'%');
         }
+        //use this filter when using search bar
         if($filters['search'] ?? false){
             $query  ->join('categories', 'idCategory', '=', 'categories.id')
                     ->join('users', 'idUser', '=', 'users.id')
