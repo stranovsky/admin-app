@@ -18,8 +18,8 @@ class CreateProductsTable extends Migration
             $table->string('productName');
             $table->longText('description');
             $table->decimal('price',10,2);
-            $table->foreignId('idUser');
-            $table->foreignId('idCategory');
+            $table->foreignId('idUser')->constrained()->onDelete('cascade');
+            $table->foreignId('idCategory')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

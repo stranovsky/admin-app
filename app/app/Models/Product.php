@@ -26,4 +26,11 @@ class Product extends Model
                     ->orWhere('description','like', '%'. request('search') .'%');
         }
     }
+
+    public function user(){
+        return $this->belongsTo(User::class, 'idUser');
+    }
+    public function cetegory(){
+        return $this->belongsTo(User::class, 'idCategory');
+    }
 }

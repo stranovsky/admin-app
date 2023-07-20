@@ -17,8 +17,8 @@ class ProductFactory extends Factory
             'productName' => $this->faker->name(),
             'description' => $this->faker->sentence(),
             'price' => 8.99,
-            'idUser' => $this->faker->randomDigit(),
-            'idCategory' => $this->faker->randomDigit(),
+            'idUser' => 1,
+            'idCategory' => 1
         ];
     }
 }

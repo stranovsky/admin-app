@@ -19,6 +19,7 @@ use App\Http\Controllers\ProductController;
 Route::post('/products/create', [ProductController::class, 'store']);
 Route::put('/products/{product}/edit', [ProductController::class, 'update'])->middleware('auth');
 Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products/manage', [ProductController::class, 'manage'])->middleware('auth');
 Route::get('/products/create', [ProductController::class, 'create'])->middleware('auth');
 Route::delete('/products/{product}', [ProductController::class, 'destroy'])->middleware('auth');
 Route::get('/products/{product}', [ProductController::class, 'show']);
@@ -29,6 +30,7 @@ Route::post('/users/authenticate',[UserController::class, 'authenticate']);
 Route::get('/register',[UserController::class, 'create'])->middleware('guest');
 Route::get('/login',[UserController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/logout',[UserController::class,'logout'])->middleware('auth');
+
 /*
 whis be wild card route
 */

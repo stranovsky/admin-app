@@ -2,16 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
-    public function index(){        
-        return view('products.index',[
+    public function index(){   
+        $products = Product::all();    
+        return response()->json([
+            'status' => 200,
+            'products' => $products
+        ], 200);
+        /*return view('products.index',[
             'heading' => 'wtf',
             'products'=> Product::latest('products.created_at')->filter(request(['categoryID','search']))->paginate(5)
-        ]);
+        ]);*/
     }
 
     public function show(Product $product){
@@ -34,10 +41,10 @@ class ProductController extends Controller
             'productName' => 'required',
             'description'=>'required',
             'price'=>['required','gte:0'],
-            'idCategory' =>'required',
-            'idUser'=>'required'
+            'idCategory' =>'required'
         ]);
 
+        $formFields['idUser'] = auth()->id();
 
         $product = Product::create($formFields);
 
@@ -62,5 +69,16 @@ class ProductController extends Controller
     public function destroy(Product $product){
         $product->delete();
         return redirect('./products')->with('success','Product deleted successfully');
+    }
+
+    public function manage(){
+        if(auth()->user()->isAdmin == false){
+            $user = auth()->user()->products->get();
+            //$user = Auth::user()->products()->get();
+            return view('products.manage', ['products' => $user]);
+        }
+        else{
+            return view('products.manage', ['products' => Product::latest('products.created_at')]);            
+        }
     }
 }

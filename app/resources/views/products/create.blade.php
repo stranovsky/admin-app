@@ -32,12 +32,5 @@
     @error('idCategory')
         <p>{{$message}}</p>
     @enderror
-    <label for="idUser" class="inline-block">
-        userId
-    </label>
-    <input type="text" name="idUser"  value="{{old('idUser')}}"/>
-    @error('idUser')
-        <p>{{$message}}</p>
-    @enderror
     <button>create product</button>
 </form>
