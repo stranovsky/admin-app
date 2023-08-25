@@ -9,17 +9,14 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
+
     public function index(){   
-        $products = Product::all();    
-        return response()->json([
-            'status' => 200,
-            'products' => $products
-        ], 200);
-        /*return view('products.index',[
+        return  view('products.index',[
             'heading' => 'wtf',
             'products'=> Product::latest('products.created_at')->filter(request(['categoryID','search']))->paginate(5)
-        ]);*/
+        ]);
     }
+
 
     public function show(Product $product){
         
@@ -74,7 +71,6 @@ class ProductController extends Controller
     public function manage(){
         if(auth()->user()->isAdmin == false){
             $user = auth()->user()->products->get();
-            //$user = Auth::user()->products()->get();
             return view('products.manage', ['products' => $user]);
         }
         else{
