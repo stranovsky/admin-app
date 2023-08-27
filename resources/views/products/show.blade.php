@@ -1,3 +1,6 @@
+@extends('layouts/layout')
+
+@section('content')
 <h1>{{$heading}}</h1>
 <p><a href = './'>go back</a>
 <h2>
@@ -19,3 +22,4 @@
             Delete
         </button>
 </div>
+@endsection

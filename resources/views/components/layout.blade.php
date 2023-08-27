@@ -31,7 +31,26 @@
 </head>
 
 <body>
-    <h1>"Yo duud"</h1>
-    {{$slot}}
+    <div id="layout-wrapper">
+        {{$slot}}
+
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script src="{{ asset('assets/auth/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{ asset('assets/auth/libs/simplebar/simplebar.min.js')}}"></script>
+    <script src="{{ asset('assets/auth/libs/node-waves/waves.min.js')}}"></script>
+    <script src="{{ asset('assets/auth/libs/feather-icons/feather.min.js')}}"></script>
+    <script src="{{ asset('assets/auth/js/pages/plugins/lord-icon-2.1.0.js')}}"></script>
+    <script src="{{ asset('assets/auth/js/plugins.js')}}"></script>
+
+    <!-- apexcharts -->
+    <script src="{{ asset('assets/auth/libs/apexcharts/apexcharts.min.js')}}"></script>
+
+    <!-- Dashboard init -->
+    <script src="{{ asset('assets/auth/js/pages/dashboard-crm.init.js')}}"></script>
+
+    <!-- App js -->
+    <script src="{{ asset('assets/auth/js/app.js')}}"></script>
 </body>
 </html>
