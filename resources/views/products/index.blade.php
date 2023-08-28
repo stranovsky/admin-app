@@ -1,27 +1,25 @@
-@auth
-<h1>Woddap {{auth()->user()->username}}</h1>
-<form class="inline" method="POST" action="./logout">
-    @csrf
-    <button type="submit">
-        <i class="fa-solid fa-door-closed">"logout"</i>
-    </button>
-</form>
-@else
-<h1>{{$heading}}<a href="./login">log in</a></h1>
-@endauth
-
-@foreach ($products as $product)
+<x-layout>
+    
+<!--@include('partials._login')-->
+<x-topbar/>
+    <x-sidebar/>
+    <x-main-content header="Products">
+        @foreach ($products as $product)
+            <x-card :product="$product"/>
+        @endforeach
+    </x-main-content>
+    <div>{{$products->links()}}</div>
+</x-layout>
+<!--
     <h2>
-        <a href = "./products/{{$product->id}}">
-        {{$product->productName}}
-        </a>
-    </h2>
-    <p>
-        {{$product->price}}
-    </p>
-    <p>
-        {{$product->description}}
-    </p>
-@endforeach
-
-<div>{{$products->links()}}</div>
+            <a href = "./{{$product->id}}">
+            {{$product->productName}}
+            </a>
+        </h2>
+        <p>
+            {{$product->price}}
+        </p>
+        <p>
+            {{$product->description}}
+        </p>
+-->

@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Category;
 
 class CategoryFactory extends Factory
 {
@@ -17,7 +18,9 @@ class CategoryFactory extends Factory
         $randomName = $this->faker->name();
         return [
             'categoryName' => $randomName,
-            'slug' => Str::lower($randomName),
+            'description' => $this->faker->sentence(),
+            'slug' => Category::generate_slug($randomName),
+            'idUser' => 1
         ];
     }
 }

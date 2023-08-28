@@ -1,3 +1,4 @@
+<x-layout>
 <h1>'POOB'</h1>
 <!--for some unknowable reason POST to index page refused to insert data into database-->
 <form method="POST" action="./edit">
@@ -42,3 +43,4 @@
     @enderror
     <button>update product</button>
 </form>
+</x-layout>
