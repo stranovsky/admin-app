@@ -1,6 +1,4 @@
-@extends('layouts/layout')
-
-@section('content')
+<x-layout>
 <h1>'BOOP'</h1>
 <!--for some unknowable reason POST to index page refused to insert data into database-->
 <form method="POST" action="./create">
@@ -37,4 +35,4 @@
     @enderror
     <button>create product</button>
 </form>
-@endsection
+</x-layout>

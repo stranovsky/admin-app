@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,12 +32,16 @@ Route::get('/register',[UserController::class, 'create'])->middleware('guest');
 Route::get('/login',[UserController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/logout',[UserController::class,'logout'])->middleware('auth');
 
+
+Route::get('/categories/create', [CategoryController::class, 'create'])->middleware('auth');
+Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->middleware('auth');
+
 /*
 whis be wild card route
 */
-Route::get('/hello/{id}', function($id) {
-    return response('<h1><i>sup world ' . $id.'</i></h1>');
-})->where('id', '[0-9]+');
+Route::get('/hello', function() {
+    return view('layouts.auth');
+});
 
 //request example
 Route::get('/search', function(Request $request){
